@@ -1,0 +1,1080 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo Justicia Indígena - Policía Nacional del Ecuador</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --azul-marino: #001f54;
+            --gris: #6c757d;
+            --gris-claro: #e9ecef;
+            --blanco: #ffffff;
+            --oro: #d4af37;
+        }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Fondo semi-transparente */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/fondo.png') center/cover no-repeat;
+    opacity: 0.2; /* Ajusta la transparencia (0.1 a 1) */
+    z-index: -1;
+}
+
+        .header {
+            background: linear-gradient(135deg, var(--azul-marino) 0%, #003875 100%);
+            color: var(--blanco);
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            flex-shrink: 0;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: var(--blanco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            padding: 10px;
+        }
+
+        .logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .header-text {
+            flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+        }
+
+        .header-text h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header-text p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }/* --- ESTILOS MODIFICADOS PARA LA IMAGEN DERECHA (MINISTERIO) --- */
+.logo-container-right {
+    flex-shrink: 0; 
+    margin-left: auto; 
+    width: 120px; 
+    height: 120px; 
+    background: var(--blanco);
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    padding: 10px; 
+}
+
+.logo-container-right img {
+    max-width: 100%; 
+    max-height: 100%; 
+    object-fit: contain; 
+}
+
+/* --- SOLO AGRANDA LA IMAGEN DEL MINISTERIO --- */
+.logo-container-right img[src="img/ministerio.png"] {
+    transform: scale(1.2);
+}
+
+.nav-tab {
+    padding: 1rem 2rem;
+    cursor: pointer;
+    border: none;
+    background: ; /* Celeste atractivo */
+    color: var(--black);
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Igual que el resto */
+    font-weight: bold; /* Negrilla */
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+    border-radius: 5px 5px 0 0; /* Bordes redondeados arriba */
+    margin-right: 5px; /* Separación entre botones */
+}
+
+.nav-tab:hover {
+    background: #3498db; /* Celeste más oscuro al pasar mouse */
+}
+
+.nav-tab.active {
+    background: #2e86c1; /* Celeste más intenso para pestaña activa */
+    border-bottom-color: #154360; /* Línea inferior para resaltar */
+}
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--blanco);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--azul-marino);
+        }
+
+        .card h2 {
+            color: var(--azul-marino);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: var(--gris);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item {
+            background: var(--blanco);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--gris-claro);
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #dee2e6;
+        }
+
+        .faq-question h3 {
+            color: var(--azul-marino);
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--azul-marino);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 2000px;
+            padding: 1.5rem;
+        }
+
+        .diagram {
+            background: var(--blanco);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .flow-step {
+            background: linear-gradient(135deg, var(--azul-marino), #003875);
+            color: var(--blanco);
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .flow-step::after {
+            content: '↓';
+            position: absolute;
+            bottom: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: var(--azul-marino);
+        }
+
+        .flow-step:last-child::after {
+            content: '';
+        }
+
+        .flow-step-number {
+            background: var(--oro);
+            color: var(--azul-marino);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        .action-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .action-item {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: var(--gris-claro);
+            border-left: 4px solid var(--azul-marino);
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .action-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .action-item::before {
+            content: '✓';
+            color: var(--azul-marino);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid;
+        }
+
+        .alert-info {
+            background: #cfe2ff;
+            border-color: #0d6efd;
+            color: #084298;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #997404;
+        }
+
+        .alert-important {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #842029;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-box {
+            background: var(--blanco);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--azul-marino);
+        }
+
+        .info-box h4 {
+            color: var(--azul-marino);
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            background: var(--azul-marino);
+            color: var(--blanco);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-text h1 {
+                font-size: 1.5rem;
+            }
+            
+            /* --- ESTILOS MODIFICADOS RESPONSIVOS --- */
+            .logo-container-right {
+                margin-left: 0; /* Centra el logo en vista móvil */
+                margin-top: 1rem; /* Añade espacio arriba en vista móvil */
+            }
+            /* --- FIN DE ESTILOS MODIFICADOS --- */
+
+            .nav-tab {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .flow-step {
+                width: 95%;
+            }
+        }
+
+        .search-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 600px;
+            padding: 1rem;
+            border: 2px solid var(--gris);
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--azul-marino);
+            box-shadow: 0 0 10px rgba(0,31,84,0.2);
+        }
+
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .principle-card {
+            background: linear-gradient(135deg, var(--azul-marino), #003875);
+            color: var(--blanco);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .principle-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--oro);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: var(--blanco);
+        }
+
+        th {
+            background: var(--azul-marino);
+            color: var(--blanco);
+            padding: 1rem;
+            text-align: left;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--gris-claro);
+        }
+
+        tr:hover {
+            background: var(--gris-claro);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            padding: 1.5rem;
+            background: var(--blanco);
+            border-left: 4px solid var(--azul-marino);
+            margin-bottom: 2rem;
+            position: relative;
+            margin-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 1.5rem;
+            width: 20px;
+            height: 20px;
+            background: var(--oro);
+            border-radius: 50%;
+            border: 3px solid var(--azul-marino);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="img/images.png" alt="Policía Nacional del Ecuador">
+                </div>
+            </div>
+            <div class="header-text">
+                       <h1>PROTOCOLO DE DIÁLOGO INTERCULTURAL</h1>
+        <p>Guía para Operadores de Justicia - Policía Nacional del Ecuador</p>
+        <p style="font-size: 0.9rem; opacity: 0.8;">Resolución 053-2023 | Consejo de la Judicatura | DIGIN Departamento de Coordinación Opercional</p>
+    </div>
+
+    <div class="logo-container-right">
+        <img src="img/ministerio.png" alt="Logo Ministerio del Interior">
+    </div>
+</header>
+
+<!-- Agrega esto dentro de tu <head> o archivo CSS -->
+<style>
+    .header-text {
+        text-align: center;
+    }
+</style>
+    <nav class="nav-tabs">
+        <button class="nav-tab active" onclick="showSection('inicio', this)">Inicio</button>
+        <button class="nav-tab" onclick="showSection('faq', this)">Preguntas Frecuentes</button>
+        <button class="nav-tab" onclick="showSection('protocolo', this)">Protocolo</button>
+        <button class="nav-tab" onclick="showSection('guia', this)">Guía de Coordinación</button>
+        <button class="nav-tab" onclick="showSection('policia', this)">Rol Policial</button>
+        <button class="nav-tab" onclick="showSection('graficos', this)">Procedimientos</button>
+    </nav>
+
+    <div class="container">
+
+        <section id="inicio" class="content-section active">
+            <div class="card">
+                <h2>Información General</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Este visualizador presenta el <strong>Protocolo para la Aplicación del Diálogo Intercultural</strong> 
+                    y la <strong>Guía de Mecanismos de Coordinación y Cooperación</strong> entre autoridades de la 
+                    justicia indígena y justicia ordinaria, aprobados mediante <strong>Resolución 053-2023</strong> 
+                    del 28 de marzo de 2023.
+                </p>
+            </div>
+
+            <div class="grid-2">
+                <div class="info-box">
+                    <h4>Objetivo Principal</h4>
+                    <p>Garantizar la aplicación del principio de interculturalidad en los procesos judiciales donde 
+                    intervienen miembros de comunidades, pueblos y nacionalidades indígenas.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>Base Legal</h4>
+                    <p>Constitución del Ecuador Art. 171, Código Orgánico de la Función Judicial Arts. 343-346, 
+                    Convenio 169 OIT, Sentencia Corte Constitucional 112-14-JH/21</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>Destinatarios</h4>
+                    <p>Jueces, fiscales, defensores públicos, <strong>personal policial</strong>, 
+                    y autoridades de justicia indígena</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>Ámbito de Aplicación</h4>
+                    <p>Nacional, especialmente en territorios con presencia de comunidades, pueblos y 
+                    nacionalidades indígenas</p>
+                </div>
+            </div>
+
+            <div class="alert alert-important">
+                <strong>Importante para Personal Policial:</strong> La Policía Nacional tiene un rol fundamental 
+                en la cooperación con la justicia indígena según el Art. 346 del COFJ. Debe respetar las diferentes 
+                formas de organización territorial y actuar previa coordinación con autoridades comunitarias.
+            </div>
+
+            <div class="card">
+                <h2>Principios de la Justicia Intercultural</h2>
+                <div class="principle-grid">
+                    <div class="principle-card">
+                        <h4>Diversidad</h4>
+                        <p>Reconocimiento del derecho propio, costumbres y prácticas ancestrales de los pueblos indígenas.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h4>Igualdad</h4>
+                        <p>Garantizar la comprensión de normas y procedimientos mediante traductores, peritos y especialistas.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h4>Non bis in ídem</h4>
+                        <p>Lo decidido por autoridades indígenas no puede ser juzgado ni revisado por la justicia ordinaria.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h4>Pro Jurisdicción Indígena</h4>
+                        <p>En caso de duda, se preferirá la jurisdicción indígena para asegurar su autonomía.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" 
+                        placeholder="Buscar en el documento..." 
+                        onkeyup="searchContent()">
+            </div>
+        </section>
+
+        <section id="faq" class="content-section">
+            <h2 style="color: var(--azul-marino); margin-bottom: 2rem;">Preguntas Frecuentes</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Qué es el diálogo intercultural?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Es la comunicación directa entre operadores de justicia ordinaria y autoridades indígenas dentro de un proceso judicial. Permite la comprensión mutua de sus sistemas de justicia y tiene como objetivo resolver conflictos respetando la diversidad cultural.</p>
+                    <p><strong>Características:</strong></p>
+                    <ul>
+                        <li>Siempre es de doble vía (nunca imposición unilateral)</li>
+                        <li>Respetuoso de la autonomía indígena</li>
+                        <li>Sensible a las diferencias culturales</li>
+                        <li>Contribuye a la coordinación entre sistemas jurídicos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Cuándo debe la Policía coordinar con autoridades indígenas?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>La Policía debe coordinar con autoridades indígenas en los siguientes casos:</p>
+                    <ul class="action-list">
+                        <li class="action-item">Antes de realizar operativos en territorios comunitarios</li>
+                        <li class="action-item">Al ejecutar citaciones o notificaciones en comunidades</li>
+                        <li class="action-item">Cuando se requiera aprehensión de miembros indígenas</li>
+                        <li class="action-item">Durante procesos de justicia indígena (cuando la comunidad lo solicite)</li>
+                        <li class="action-item">Para garantizar orden en asambleas comunitarias</li>
+                    </ul>
+                    <div class="alert alert-warning">
+                        <strong>Obligatorio:</strong> Toda actuación policial en territorios comunitarios requiere previa socialización y autorización de autoridades comunitarias (Art. 346 COFJ).
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Qué es la declinación de competencia?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Es el acto por el cual un juez de justicia ordinaria deja de sustanciar un proceso porque el conflicto corresponde a la justicia indígena. Requisitos:</p>
+                    <ul>
+                        <li>Petición de autoridad indígena</li>
+                        <li>Término probatorio de 3 días</li>
+                        <li>Juramento de autoridad indígena</li>
+                        <li>Verificación de existencia de proceso en justicia indígena</li>
+                    </ul>
+                    <p><strong>Importante:</strong> Los jueces deben limitarse a verificar la existencia del proceso indígena, sin cuestionar su validez (Sentencia 134-13-EP-20).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Cómo identificar a una persona indígena en un proceso?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Existen dos dimensiones de autoidentificación:</p>
+                    <h4>1. Autoidentificación Individual:</h4>
+                    <ul>
+                        <li>Manifestación expresa de pertenencia</li>
+                        <li>Práctica de elementos culturales</li>
+                        <li>Uso del idioma materno</li>
+                        <li>Vestimenta tradicional</li>
+                        <li>Cumplimiento de normas propias</li>
+                    </ul>
+                    <h4>2. Reconocimiento Colectivo:</h4>
+                    <ul>
+                        <li>La comunidad reconoce a la persona como miembro</li>
+                        <li>Participación en vida comunitaria</li>
+                    </ul>
+                    <div class="alert alert-info">
+                        Si hay dudas, se puede solicitar peritaje antropológico o diálogo con autoridades indígenas.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Qué hacer en casos de violencia contra mujeres o niños indígenas?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>En estos casos se aplican garantías reforzadas:</p>
+                    <div class="alert alert-important">
+                        <strong>Prohibición constitucional:</strong> No se puede alegar derecho propio para justificar o dejar de sancionar violación de derechos de mujeres, niñas, niños y adolescentes (Art. 171 CRE, Art. 343 COFJ).
+                    </div>
+                    <p><strong>Actuaciones requeridas:</strong></p>
+                    <ul>
+                        <li>Aplicar enfoque de género e intercultural simultáneamente</li>
+                        <li>Garantizar no revictimización</li>
+                        <li>Incluir participación de consejos o dirigencia de mujeres</li>
+                        <li>Aplicar técnica de escucha especializada</li>
+                        <li>Respetar decisión de la víctima sobre asistencia a diálogos</li>
+                        <li>Considerar voz de la familia (ayllu) de la víctima</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Qué son las medidas alternativas a prisión preventiva?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Según el Convenio 169 OIT (Art. 10), debe darse preferencia a tipos de sanción distintos del encarcelamiento. Medidas alternativas:</p>
+                    <ul class="action-list">
+                        <li class="action-item">Vigilancia a cargo de la comunidad y autoridades</li>
+                        <li class="action-item">Prohibición de salida del territorio bajo control comunitario</li>
+                        <li class="action-item">Presentaciones periódicas ante autoridades indígenas</li>
+                        <li class="action-item">Trabajo comunitario supervisado</li>
+                    </ul>
+                    <p><strong>Estándar para pueblos de reciente contacto:</strong> El juez NO puede dictar prisión preventiva sin antes:</p>
+                    <ol>
+                        <li>Realizar diálogo intercultural con autoridades indígenas</li>
+                        <li>Analizar medidas alternativas conjuntamente</li>
+                        <li>Justificar con carga argumentativa mayor por qué no aplican alternativas</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>¿Quiénes son autoridades indígenas legítimas?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Son autoridades legítimas aquellas electas conforme derecho propio, NO requieren registro estatal:</p>
+                    <ul>
+                        <li><strong>Asamblea General Comunitaria:</strong> Máxima autoridad para resolver conflictos</li>
+                        <li><strong>Autoridades Comunitarias:</strong> Representantes elegidos según costumbres (caciques, taitas, dirigentes)</li>
+                        <li><strong>Autoridades Inter-comunitarias:</strong> Representan varias comunidades para conflictos entre ellas</li>
+                        <li><strong>Organizaciones Representativas:</strong> OSG, OTG, CONAIE, ECUARUNARI, CONFENIAE, etc.</li>
+                    </ul>
+                    <div class="alert alert-info">
+                        <strong>Importante:</strong> La legitimidad NO depende de registro ante el Estado, sino del reconocimiento comunitario según derecho propio (Sentencia 1-15-EI/21).
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="protocolo" class="content-section">
+            <div class="card">
+                <h2>Protocolo para la Aplicación del Diálogo Intercultural</h2>
+                
+                <h3>1. Interpretación Intercultural</h3>
+                <p>Es la obligación de realizar una nueva lectura y comprensión de las situaciones con enfoque sustentado en la diversidad cultural. Implica:</p>
+                <ul>
+                    <li>Determinar significados de normas, costumbres y hechos mediante diálogo entre culturas</li>
+                    <li>NO limitarse a elementos aislados (traductor, peritaje)</li>
+                    <li>Evaluar características de la persona desde su propia cultura</li>
+                </ul>
+
+                <h3>2. Lineamientos para el Diálogo Intercultural</h3>
+                <div class="alert alert-warning">
+                    <strong>Obligatorio:</strong> Los operadores de justicia deben abrir diálogo intercultural ANTES de adoptar medidas contra personas indígenas.
+                </div>
+
+                <h4>Mecanismos directos priorizados:</h4>
+                <ul class="action-list">
+                    <li class="action-item">Visitas in situ a la comunidad</li>
+                    <li class="action-item">Audiencias con participación de autoridades</li>
+                    <li class="action-item">Mesas de diálogo</li>
+                    <li class="action-item">Peritajes con estudios de campo</li>
+                    <li class="action-item">Uso de traductores e intérpretes</li>
+                </ul>
+
+                <h4>Lugar del diálogo:</h4>
+                <p>Debe fijarse previo acuerdo, considerando la posibilidad de realizarlo en el territorio indígena cuando las condiciones lo permitan.</p>
+
+                <h4>Facilitador del diálogo:</h4>
+                <p>Puede participar una persona facilitadora cuando se requiera. Requisitos:</p>
+                <ul>
+                    <li>Conocimiento en pluralismo jurídico, derechos colectivos, justicia indígena</li>
+                    <li>Facilidad para entablar acuerdos</li>
+                    <li>Propuesto por cualquiera de las partes</li>
+                    <li>Sin oposición de la otra parte</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Actuaciones Específicas por Operador</h2>
+
+                <h3>AGENTES FISCALES</h3>
+                <ul class="action-list">
+                    <li class="action-item">Solicitar peritajes antropológicos, sociológicos, interculturales SIEMPRE que persona procesada o víctima sea indígena</li>
+                    <li class="action-item">Equipos técnicos deben recabar información con enfoque intercultural</li>
+                    <li class="action-item">Tomar contacto directo con autoridades indígenas antes de solicitar medida cautelar</li>
+                    <li class="action-item">Notificar a Defensoría del Pueblo</li>
+                    <li class="action-item">Solicitar medidas alternativas a prisión coordinadas con autoridades indígenas</li>
+                    <li class="action-item">Si existe decisión de justicia indígena, solicitar sorteo de causa para que juez decline competencia</li>
+                </ul>
+
+                <h3>JUECES Y JUEZAS</h3>
+                <ul class="action-list">
+                    <li class="action-item">Iniciar o continuar diálogo intercultural en cualquier fase procesal</li>
+                    <li class="action-item">Disponer intervención de peritos interculturales, antropólogos, intérpretes</li>
+                    <li class="action-item">Dar preferencia a sanciones distintas al encarcelamiento (Art. 10 Convenio 169 OIT)</li>
+                    <li class="action-item">Para pueblos de reciente contacto: NO dictar prisión preventiva sin cumplir 3 pasos obligatorios</li>
+                    <li class="action-item">Si hay privación de libertad indígena, ubicar en centros cercanos a comunidades con horarios flexibles de visita</li>
+                </ul>
+
+                <h3>DEFENSORES PÚBLICOS</h3>
+                <ul class="action-list">
+                    <li class="action-item">Promover reconocimiento y respeto de derechos colectivos</li>
+                    <li class="action-item">Solicitar presencia de peritos interculturales</li>
+                    <li class="action-item">Coordinar con autoridad indígena para petición de declinación de competencia</li>
+                    <li class="action-item">Brindar asistencia legal para formulación de solicitudes interjurisdiccionales</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Hábeas Corpus con Enfoque Intercultural</h2>
+                
+                <div class="alert alert-important">
+                    <strong>Regla General:</strong> El hábeas corpus es la garantía para que personas indígenas privadas de libertad la recuperen si al dictarse la medida NO se aplicó el principio de interculturalidad.
+                </div>
+
+                <h3>Actuaciones del Tribunal de Hábeas Corpus:</h3>
+                <ul>
+                    <li>Abrir diálogo intercultural antes o durante la audiencia</li>
+                    <li>Notificar a autoridades de comuna/comunidad/pueblo/nacionalidad</li>
+                    <li>Puede solicitar apoyo de experto facilitador</li>
+                    <li>Disponer pericias interculturales con peritos indígenas</li>
+                    <li>Realizar audiencia en la comunidad si existen condiciones</li>
+                    <li>Suspender audiencia para reuniones con autoridades indígenas</li>
+                </ul>
+
+                <h3>Control de Legalidad y Arbitrariedad:</h3>
+                <p><strong>Ilegal:</strong> Privación ejecutada contra normas del ordenamiento jurídico</p>
+                <p><strong>Arbitraria:</strong> Cuando es incompatible con derechos constitucionales, resultado de discriminación, o sin aplicar interculturalidad</p>
+                
+                <div class="alert alert-info">
+                    Si la privación de libertad no respeta la identidad cultural u obstaculiza derechos colectivos, es arbitraria y debe ordenarse libertad inmediata.
+                </div>
+            </div>
+        </section>
+
+        <section id="guia" class="content-section">
+            <div class="card">
+                <h2>Guía de Mecanismos de Coordinación y Cooperación</h2>
+
+                <h3>MECANISMOS DE COOPERACIÓN</h3>
+                <p>Son actos jurisdiccionales de auxilio mutuo para cumplimiento de decisiones:</p>
+
+                <h4>1. Declinación de Competencia (Art. 345 COFJ)</h4>
+                <table>
+                    <tr>
+                        <th>Paso</th>
+                        <th>Acción</th>
+                        <th>Responsable</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Petición de autoridad indígena</td>
+                        <td>Autoridad indígena</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Juez verifica existencia de proceso indígena</td>
+                        <td>Juez</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Juez dicta resolución de declinación de competencia</td>
+                        <td>Juez</td>
+                    </tr>
+                </table>
+                <div class="alert alert-info">
+                    <strong>Recuerda:</strong> La declinación debe ser oportuna para que la justicia indígena pueda resolver el caso eficazmente.
+                </div>
+
+                <h4>2. Requerimiento de Apoyo de Fuerza Pública (Art. 346 COFJ)</h4>
+                <p>Las autoridades indígenas pueden solicitar apoyo de la Policía Nacional para:</p>
+                <ul class="action-list">
+                    <li class="action-item">Ejecutar detenciones ordenadas por la justicia indígena</li>
+                    <li class="action-item">Mantener el orden en asambleas comunitarias</li>
+                    <li class="action-item">Garantizar la seguridad de las personas</li>
+                </ul>
+                <div class="alert alert-warning">
+                    <strong>Condición:</strong> Siempre previa coordinación y socialización con la autoridad indígena solicitante. La Policía actúa bajo su autoridad y en respeto a sus costumbres.
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>MECANISMOS DE COORDINACIÓN</h2>
+                <p>Son acciones de acercamiento para comprender mejor las realidades y necesidades de ambos sistemas de justicia.</p>
+
+                <h4>1. Mesas de Diálogo Interinstitucional</h4>
+                <p>Espacios permanentes de encuentro entre:</p>
+                <ul>
+                    <li>Consejo de la Judicatura</li>
+                    <li>Fiscalía General del Estado</li>
+                    <li>Defensoría Pública</li>
+                    <li>Policía Nacional</li>
+                    <li>Autoridades de justicia indígena</li>
+                    <li>Organizaciones indígenas</li>
+                </ul>
+                <p><strong>Objetivos:</strong> Armonizar criterios, resolver conflictos de competencia, promover capacitación, diseñar protocolos.</p>
+
+                <h4>2. Talleres de Sensibilización y Capacitación</h4>
+                <ul class="action-list">
+                    <li class="action-item">Dirigidos a todos los operadores de justicia y personal policial.</li>
+                    <li class="action-item">Contenidos: Derechos colectivos, pluralismo jurídico, derecho propio indígena, interculturalidad.</li>
+                    <li class="action-item">Se recomienda incluir autoridades y sabios indígenas como facilitadores.</li>
+                </ul>
+
+                <h4>3. Observación de Actos de Justicia Indígena</h4>
+                <p>Permite a operadores de justicia ordinaria conocer de cerca los procedimientos, principios y sanciones aplicados en las comunidades. Fomenta el respeto y la confianza.</p>
+                <div class="alert alert-info">
+                    <strong>Importante:</strong> La observación debe ser respetuosa y no injerencista, con la autorización de la comunidad.
+                </div>
+            </div>
+        </section>
+
+        <section id="policia" class="content-section">
+            <div class="card">
+                <h2>Rol de la Policía Nacional del Ecuador</h2>
+                <p>La Constitución y el COFJ establecen el rol de la Policía en la cooperación con la justicia indígena, reconociendo su autonomía y respeto a sus formas de organización.</p>
+
+                <h3>Principios de Actuación Policial:</h3>
+                <ul class="action-list">
+                    <li class="action-item"><strong>Respeto a la autonomía:</strong> Las decisiones de la justicia indígena son obligatorias.</li>
+                    <li class="action-item"><strong>Previa coordinación:</strong> Toda intervención en territorios indígenas debe ser socializada y autorizada por sus autoridades.</li>
+                    <li class="action-item"><strong>Diálogo intercultural:</strong> Priorizar la comunicación y comprensión de la cosmovisión indígena.</li>
+                    <li class="action-item"><strong>No intervención directa:</strong> La Policía no puede intervenir en asuntos de justicia indígena sin solicitud expresa.</li>
+                    <li class="action-item"><strong>Protección de Derechos Humanos:</strong> Garantizar siempre los derechos fundamentales, especialmente de mujeres, niños y grupos vulnerables.</li>
+                </ul>
+
+                <h3>Momentos Clave de Cooperación Policial:</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Antes de un operativo/ingreso al territorio:</h4>
+                        <p>Realizar acercamiento y diálogo con autoridades comunitarias para informar el motivo, coordinar la entrada y obtener autorización. Respetar sus protocolos de ingreso.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Ejecución de citaciones/notificaciones:</h4>
+                        <p>Se coordina con la autoridad indígena para su entrega, asegurando que se realice de manera culturalmente adecuada y en el idioma local si es necesario.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Aprehensiones de personas indígenas:</h4>
+                        <p>Informar inmediatamente a la autoridad indígena, permitir su presencia y participación. Trasladar al aprehendido a la autoridad competente con respeto a su dignidad.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Apoyo a decisiones de justicia indígena:</h4>
+                        <p>Cuando la autoridad indígena solicita el apoyo policial para ejecutar una sanción o mantener el orden, la Policía debe colaborar bajo las condiciones acordadas y respetando el derecho propio.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Conflictos de competencia:</h4>
+                        <p>Si la Policía detecta un caso que podría ser de justicia indígena, debe informar al fiscal y facilitar el diálogo para una posible declinación de competencia.</p>
+                    </div>
+                </div>
+                <div class="alert alert-important">
+                    <strong>Prohibido:</strong> Actuaciones unilaterales o sin consentimiento de la autoridad indígena en sus territorios. La injerencia sin coordinación es una violación de derechos.
+                </div>
+            </div>
+        </section>
+
+        <section id="graficos" class="content-section">
+            <div class="card">
+                <h2>Diagramas de Flujo de Procedimientos Clave</h2>
+                <p>Estos diagramas ilustran de manera sencilla los pasos a seguir en situaciones que involucran la justicia intercultural.</p>
+
+                <h3>Diagrama 1: Declinación de Competencia</h3>
+                <div class="diagram flowchart">
+                    <div class="flow-step">
+                        <span class="flow-step-number">1</span>
+                        <strong>Inicio del Proceso Ordinario</strong>
+                        <p>Juez o Fiscal identifica posible competencia indígena.</p>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-step-number">2</span>
+                        <strong>Petición de Autoridad Indígena</strong>
+                        <p>Autoridad solicita formalmente la declinación de competencia.</p>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-step-number">3</span>
+                        <strong>Audiencia de Verificación</strong>
+                        <p>Juez convoca a audiencia para verificar existencia del proceso indígena.</p>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-step-number">4</span>
+                        <strong>Resolución del Juez</strong>
+                        <p>Si procede, el juez declina competencia y remite el caso a la justicia indígena.</p>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-step-number">5</span>
+                        <strong>Resolución en Justicia Indígena</strong>
+                        <p>La autoridad indígena sustanciará y resolverá el caso.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Diagrama 2: Actuación Policial en Territorio Indígena</h3>
+                <div class="diagram flowchart">
+                    <div class="flow-step">
+                        <span class="flow-step-number">1</span>
+                        <strong>Necesidad de Intervención Policial</strong>
+                        <p>Por orden judicial o solicitud de apoyo.</p>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-step-number">2</span>
+                        <strong>Coordinación con Autoridad Indígena</strong>
+                        <p>Contacto previo, socialización del motivo y solicitud de autorización.</p>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-step-number">3</span>
+                        <strong>Acuerdo de Ingreso y Condiciones</strong>
+                        <p>Se establecen protocolos y límites de la actuación policial.</p>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-step-number">4</span>
+                        <strong>Intervención Policial Respetuosa</strong>
+                        <p>Actuación bajo supervisión o acompañamiento de la autoridad indígena.</p>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-step-number">5</span>
+                        <strong>Informe y Despedida</strong>
+                        <p>Policía informa resultados y se retira del territorio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div> 
+
+    <footer class="footer">
+        <p>&copy; 2025 Policía Nacional del Ecuador - Todos los derechos reservados. Direccion Generaal de Investigaciones - Departamento de Coordinación Operacional</p>
+    </footer>
+
+
+    <script>
+    // Función para cambiar entre las secciones (pestañas de navegación)
+    function showSection(sectionId, element) {
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        const tabs = document.querySelectorAll('.nav-tab');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        const activeSection = document.getElementById(sectionId);
+        if (activeSection) {
+            activeSection.style.display = 'block';
+        }
+
+        element.classList.add('active');
+    }
+
+    // Función para desplegar y ocultar las respuestas de las preguntas frecuentes
+    function toggleFaq(questionElement) {
+        const faqItem = questionElement.parentElement;
+        faqItem.classList.toggle('active');
+    }
+
+    // Función para buscar texto en todo el contenido
+    function searchContent() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toLowerCase();
+        const container = document.querySelector('.container');
+        const itemsToSearch = container.querySelectorAll('.card, .faq-item');
+
+        itemsToSearch.forEach(item => {
+            const text = item.textContent || item.innerText;
+            if (text.toLowerCase().indexOf(filter) > -1) {
+                item.style.display = "";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
+
+    // Asegura que la primera sección ('inicio') se muestre al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+        showSection('inicio', document.querySelector('.nav-tab.active'));
+    });
+</script>
+
+</body>
+</html>
